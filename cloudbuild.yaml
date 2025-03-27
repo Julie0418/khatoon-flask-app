@@ -1,0 +1,28 @@
+steps:
+  # Step 1: Build the Docker image from your Flask app code
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - build
+      - -t
+      - gcr.io/robotic-idiom-455006-a3/khatoon-flask-app:latest
+      - .
+
+  # Step 2: Push the newly built image to the Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - push
+      - gcr.io/robotic-idiom-455006-a3/khatoon-flask-app:latest
+
+  # Step 3: Update the running instance so that it pulls the new image.
+  # The 'update-container' command is designed for Container-Optimized OS instances.
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      - compute
+      - instances
+      - update-container
+      - khatoon-app-instance
+      - --zone=us-central1-a
+      - --container-image
+      - gcr.io/robotic-idiom-455006-a3/khatoon-flask-app:latest
+
+
