@@ -25,4 +25,5 @@ steps:
       - --container-image
       - gcr.io/robotic-idiom-455006-a3/khatoon-flask-app:latest
 
-
+options:
+  logging: CLOUD_LOGGING_ONLY
