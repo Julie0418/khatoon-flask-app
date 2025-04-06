@@ -10,7 +10,6 @@ phases:
   install:
     commands:
       - echo "Installing security scanning tools..."
-      - curl -sSL https://get.docker.com/ | sh
       - curl -L https://github.com/aquasecurity/trivy/releases/latest/download/trivy_0.41.0_Linux-64bit.tar.gz | tar zx
       - mv trivy /usr/local/bin/
   pre_build:
