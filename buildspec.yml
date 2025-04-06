@@ -10,7 +10,8 @@ phases:
   install:
     commands:
       - echo "Installing security scanning tools..."
-      - curl -L https://github.com/aquasecurity/trivy/releases/latest/download/trivy_0.41.0_Linux-64bit.tar.gz | tar zx
+      - curl -L https://github.com/aquasecurity/trivy/releases/latest/download/trivy_0.41.0_Linux-64bit.tar.gz -o trivy.tar.gz
+      - tar -zxvf trivy.tar.gz
       - mv trivy /usr/local/bin/
   pre_build:
     commands:
